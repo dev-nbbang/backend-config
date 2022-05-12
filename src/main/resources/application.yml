@@ -10,14 +10,15 @@ spring:
           uri: git@github.com:dev-nbbang/nbbang-config-repository.git
           ignore-local-ssh-settings: true
           private-key: |
-            -----BEGIN OPENSSH PRIVATE KEY-----
-            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-            QyNTUxOQAAACDEzoK7KZqzYCLoyrzpFvbzRXR7aCjoDdTZvMI/bz95uAAAAJj/1UeX/9VH
-            lwAAAAtzc2gtZWQyNTUxOQAAACDEzoK7KZqzYCLoyrzpFvbzRXR7aCjoDdTZvMI/bz95uA
-            AAAECN1GEzOA5PnHK9yRlhC1z/z3qlKKsMcI2WhIkSNTwzNcTOgrspmrNgIujKvOkW9vNF
-            dHtoKOgN1Nm8wj9vP3m4AAAAE2tpbWhvMTk5NUBuYXZlci5jb20BAg==
-            -----END OPENSSH PRIVATE KEY-----
+            -----BEGIN EC PRIVATE KEY-----
+            MHcCAQEEIIQf9VslUAT8vxL6sUBTaKuftWw7E6utoMcsdl4sl3/loAoGCCqGSM49
+            AwEHoUQDQgAEALdKGeOQ6U6tl9G632u1xnZTI4ZpCc+OT1QklI/rl/FHOkTZo67+
+            YiUf7cnH5nXHbxhtBEPIIIP/gi9PTKq7Nw==
+            -----END EC PRIVATE KEY-----
+          host-key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg= # ssh-keyscan github.com의 hostmname
+          host-key-algorithm: ecdsa-sha2-nistp256  # ssh-keygen -m PEM -t ecdsa -f 파일명
           timeout: 4
+          default-label: main
 
 # actuator
 management:
