@@ -1,0 +1,30 @@
+server:
+  port: 8197
+spring:
+  application:
+    name: nbbang-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:dev-nbbang/nbbang-config-repository.git
+          ignore-local-ssh-settings: true
+          private-key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACDEzoK7KZqzYCLoyrzpFvbzRXR7aCjoDdTZvMI/bz95uAAAAJj/1UeX/9VH
+            lwAAAAtzc2gtZWQyNTUxOQAAACDEzoK7KZqzYCLoyrzpFvbzRXR7aCjoDdTZvMI/bz95uA
+            AAAECN1GEzOA5PnHK9yRlhC1z/z3qlKKsMcI2WhIkSNTwzNcTOgrspmrNgIujKvOkW9vNF
+            dHtoKOgN1Nm8wj9vP3m4AAAAE2tpbWhvMTk5NUBuYXZlci5jb20BAg==
+            -----END OPENSSH PRIVATE KEY-----
+          timeout: 4
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
