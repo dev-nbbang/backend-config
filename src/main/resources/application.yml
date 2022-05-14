@@ -19,6 +19,7 @@ spring:
           host-key-algorithm: ecdsa-sha2-nistp256  # ssh-keygen -m PEM -t ecdsa -f 파일명
           timeout: 4
           default-label: main
+          search-paths: common, member, eureka, gateway
 
 # actuator
 management:
