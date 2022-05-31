@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: nbbang-config
+  profiles:
+    active: prod
   cloud:
     config:
       server:
