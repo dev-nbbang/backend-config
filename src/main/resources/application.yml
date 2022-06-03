@@ -22,7 +22,13 @@ spring:
           timeout: 4
           default-label: main
           search-paths: common, member, eureka, gateway
-
+    bus:
+      enabled: true
+  rabbitmq:
+    host: 129.154.222.27
+    username: nbbang
+    password: nbbang-dev!@#
+    port: 5672
 # actuator
 management:
   endpoints:
@@ -32,6 +38,7 @@ management:
   endpoint:
     shutdown:
       enabled: true
+# 암호화 위한 키스토어 설정
 encrypt:
   key-store:
     location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
