@@ -16,12 +16,7 @@
 
 package org.springframework.cloud.config.monitor;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -79,6 +74,10 @@ public class PropertyPathEndpoint implements ApplicationEventPublisherAware {
             Set<String> services = new LinkedHashSet<>();
 
             for (String path : notification.getPaths()) {
+                // Repository의 파일명으로 가져온 이름과 Client의 이름과 다르기 때문에 파싱하기 위해 application.name을 등록해준다.
+                // 마지막 - 앞까지가 이름
+                parsingApplicationName(path).ifPresent(services::add);
+
                 services.addAll(guessServiceName(path));
             }
             if (this.applicationEventPublisher != null) {
@@ -116,10 +115,6 @@ public class PropertyPathEndpoint implements ApplicationEventPublisherAware {
                 }
                 else if (!name.startsWith("application")) {
                     services.add(name + ":" + profile);
-
-                    // Repository의 파일명으로 가져온 이름과 Client의 이름과 다르기 때문에 파싱하기 위해 application.name을 등록해준다.
-                    // nbbang-config-
-                    services.add(name);
                 }
                 index = stem.indexOf("-", index + 1);
             }
@@ -134,4 +129,11 @@ public class PropertyPathEndpoint implements ApplicationEventPublisherAware {
         return services;
     }
 
+    // nbbang-auth-prod.yml -> nbbang-auth : application-name
+    private Optional<String> parsingApplicationName(String path) {
+        int index = path.lastIndexOf("-prod");
+        if(index == -1) return Optional.empty();
+
+        return Optional.of(path.substring(0, index));
+    }
 }
