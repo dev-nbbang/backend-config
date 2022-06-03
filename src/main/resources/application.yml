@@ -34,6 +34,6 @@ management:
       enabled: true
 encrypt:
   key-store:
-    location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
+    location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
     password: config-access
     alias: nbbang-config-key
