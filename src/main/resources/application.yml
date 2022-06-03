@@ -29,6 +29,8 @@ spring:
     username: nbbang
     password: nbbang-dev!@#
     port: 5672
+  main:
+    allow-bean-definition-overriding: true # spring bean으로 만들어지는 class overriding
 # actuator
 management:
   endpoints:
