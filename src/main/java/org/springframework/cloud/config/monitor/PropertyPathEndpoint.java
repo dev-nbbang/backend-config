@@ -38,7 +38,6 @@ import org.springframework.web.bind.annotation.RestController;
  * HTTP endpoint for webhooks coming from repository providers.
  *
  * @author Dave Syer
- *
  */
 @RestController
 @RequestMapping(path = "${spring.cloud.config.monitor.endpoint.path:}/monitor")
@@ -112,8 +111,7 @@ public class PropertyPathEndpoint implements ApplicationEventPublisherAware {
                 String profile = stem.substring(index + 1);
                 if ("application".equals(name)) {
                     services.add("*:" + profile);
-                }
-                else if (!name.startsWith("application")) {
+                } else if (!name.startsWith("application")) {
                     services.add(name + ":" + profile);
                 }
                 index = stem.indexOf("-", index + 1);
@@ -121,19 +119,19 @@ public class PropertyPathEndpoint implements ApplicationEventPublisherAware {
             String name = stem;
             if ("application".equals(name)) {
                 services.add("*");
-            }
-            else if (!name.startsWith("application")) {
+            } else if (!name.startsWith("application")) {
                 services.add(name);
             }
         }
         return services;
     }
 
-    // nbbang-auth-prod.yml -> nbbang-auth : application-name
+    // /member/nbbang-auth-prod.yml -> nbbang-auth : application-name
     private Optional<String> parsingApplicationName(String path) {
-        int index = path.lastIndexOf("-prod");
-        if(index == -1) return Optional.empty();
+        int firstIndex = path.lastIndexOf("/");
+        int lastIndex = path.lastIndexOf("-prod");
+        if (firstIndex == -1 || lastIndex == -1) return Optional.empty();
 
-        return Optional.of(path.substring(0, index));
+        return Optional.of(path.substring(firstIndex + 1, lastIndex));
     }
 }
