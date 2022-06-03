@@ -32,3 +32,8 @@ management:
   endpoint:
     shutdown:
       enabled: true
+encrypt:
+  key-store:
+    location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
+    password: config-access
+    alias: nbbang-config-key
