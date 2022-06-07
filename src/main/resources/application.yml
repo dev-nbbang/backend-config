@@ -27,8 +27,9 @@ spring:
   rabbitmq:
     host: 129.154.222.27
     username: nbbang
-    password: nbbang-dev!@#
+#    password: nbbang-dev!@#
     port: 5672
+    password: ${RABBITMQ_PASSWORD}
   main:
     allow-bean-definition-overriding: true # spring bean으로 만들어지는 class overriding
 # actuator
