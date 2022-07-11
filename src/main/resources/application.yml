@@ -21,7 +21,7 @@ spring:
           host-key-algorithm: ecdsa-sha2-nistp256  # ssh-keygen -m PEM -t ecdsa -f 파일명
           timeout: 4
           default-label: main
-          search-paths: common, member, eureka, gateway
+          search-paths: common, member, eureka, gateway, alarm
         encrypt:
           enabled: false
 
@@ -41,4 +41,5 @@ encrypt:
     location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
     alias: nbbang-config-key
     password: config-access
+#    password: ${keystore.password}
 #    location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
