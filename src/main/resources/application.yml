@@ -4,7 +4,7 @@ spring:
   application:
     name: nbbang-config
   profiles:
-    active: local
+    active: prod
   cloud:
     config:
       server:
@@ -21,7 +21,7 @@ spring:
           host-key-algorithm: ecdsa-sha2-nistp256  # ssh-keygen -m PEM -t ecdsa -f 파일명
           timeout: 4
           default-label: main
-          search-paths: common, member, eureka, gateway, alarm
+          search-paths: common, member, eureka, gateway, alarm, party
         encrypt:
           enabled: false
 
@@ -34,12 +34,13 @@ management:
   endpoint:
     shutdown:
       enabled: true
+
 #환경설정 파일 복호화
 encrypt:
   key-store:
-#    내 로컬로 하면 돌아가는데 그러면 서버 배포하면 어케하지..?
-    location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
+    #    내 로컬로 하면 돌아가는데 그러면 서버 배포하면 어케하지..?
+    #    location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
+    location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
     alias: nbbang-config-key
     password: config-access
 #    password: ${keystore.password}
-#    location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
