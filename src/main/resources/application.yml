@@ -21,7 +21,9 @@ spring:
           host-key-algorithm: ecdsa-sha2-nistp256  # ssh-keygen -m PEM -t ecdsa -f 파일명
           timeout: 4
           default-label: main
-          search-paths: common, member, eureka, gateway
+          search-paths: common, member, eureka, gateway, alarm, party
+        encrypt:
+          enabled: false
     bus:
       enabled: true
   rabbitmq:
@@ -29,9 +31,9 @@ spring:
     username: nbbang
     password: nbbang-dev!@#
     port: 5672
-#    password: {$.}
   main:
     allow-bean-definition-overriding: true # spring bean으로 만들어지는 class overriding
+
 # actuator
 management:
   endpoints:
