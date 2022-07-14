@@ -24,6 +24,15 @@ spring:
           search-paths: common, member, eureka, gateway, alarm, party
         encrypt:
           enabled: false
+    bus:
+      enabled: true
+  rabbitmq:
+    host: 129.154.222.27
+    username: nbbang
+    password: nbbang-dev!@#
+    port: 5672
+  main:
+    allow-bean-definition-overriding: true # spring bean으로 만들어지는 class overriding
 
 # actuator
 management:
@@ -34,13 +43,9 @@ management:
   endpoint:
     shutdown:
       enabled: true
-
-#환경설정 파일 복호화
+# 암호화 위한 키스토어 설정
 encrypt:
   key-store:
-    #    내 로컬로 하면 돌아가는데 그러면 서버 배포하면 어케하지..?
-    #    location: file:///Users/zayson/Desktop/Zayson Project/엔빵/nbbang-config.jks
     location: file:///home/ubuntu/nbbang/key/nbbang-config.jks
-    alias: nbbang-config-key
     password: config-access
-#    password: ${keystore.password}
+    alias: nbbang-config-key
