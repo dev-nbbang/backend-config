@@ -23,6 +23,7 @@
 .idea
 .idea/*.xml
 *.iml
+.yml
 out
 gen
 build
